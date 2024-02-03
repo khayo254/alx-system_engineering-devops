@@ -1,0 +1,17 @@
+
+defaults
+  mode http
+  timeout client 15s
+  timeout connect 10s
+  timeout server 15s
+  timeout http-request 10s
+
+frontend khayo-tech-frontend
+    bind *:80
+    default_backend khayo-tech-backend
+
+backend khayo-tech-backend
+    balance roundrobin
+    server 151666-web-01 100.26.255.143  check
+    server 151666-web-02 52.86.42.48 check
+
